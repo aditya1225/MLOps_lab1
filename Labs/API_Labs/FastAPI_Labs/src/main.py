@@ -5,27 +5,33 @@ from predict import predict_data
 
 app = FastAPI()
 
-class IrisData(BaseModel):
-    petal_length: float
-    sepal_length: float
-    petal_width: float
-    sepal_width: float
+class CaliforniaData(BaseModel):
+    median_income: float
+    median_house_age: float
+    average_rooms: float
+    average_bedrooms: float
+    population: float
+    average_occupancy: float
+    latitude: float
+    longitude: float
 
-class IrisResponse(BaseModel):
-    response:int
+class CaliforniaResponse(BaseModel):
+    response:float
 
 @app.get("/", status_code=status.HTTP_200_OK)
 async def health_ping():
     return {"status": "healthy"}
 
-@app.post("/predict", response_model=IrisResponse)
-async def predict_iris(iris_features: IrisData):
+@app.post("/predict", response_model=CaliforniaResponse)
+async def predict_california(california_features: CaliforniaData):
     try:
-        features = [[iris_features.sepal_length, iris_features.sepal_width,
-                    iris_features.petal_length, iris_features.petal_width]]
+        features = [[california_features.median_income, california_features.median_house_age,
+                    california_features.average_rooms, california_features.average_bedrooms,
+                    california_features.population, california_features.average_occupancy,
+                    california_features.latitude, california_features.longitude]]
 
         prediction = predict_data(features)
-        return IrisResponse(response=int(prediction[0]))
+        return CaliforniaResponse(response=float(prediction[0]))
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

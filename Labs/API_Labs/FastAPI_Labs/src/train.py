@@ -1,17 +1,18 @@
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeRegressor
 import joblib
 from data import load_data, split_data
 
 def fit_model(X_train, y_train):
     """
-    Train a Decision Tree Classifier and save the model to a file.
+    Train a Decision Tree Regressor and save the model to a file.
     Args:
         X_train (numpy.ndarray): Training features.
-        y_train (numpy.ndarray): Training target values.
+        y_train (numpy.ndarray): Training target values (median house values).
     """
-    dt_classifier = DecisionTreeClassifier(max_depth=3, random_state=12)
-    dt_classifier.fit(X_train, y_train)
-    joblib.dump(dt_classifier, "../model/iris_model.pkl")
+    dt_regressor = DecisionTreeRegressor(max_depth=3, random_state=12)
+    dt_regressor.fit(X_train, y_train)
+    joblib.dump(dt_regressor, "../model/california_housing_model.pkl")
+    print("Model trained and saved successfully!")
 
 if __name__ == "__main__":
     X, y = load_data()

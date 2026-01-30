@@ -1,8 +1,12 @@
 {
     "input_test" : {
-        "sepal_length": 2.5,
-        "sepal_width": 3.5,
-        "petal_length": 1.5,
-        "petal_width": 2.5
-    }
+    "median_income": 3.6591,
+    "median_house_age": 52.0,
+    "average_rooms": 4.9319066147859925,
+    "average_bedrooms": 0.9513618677042801,
+    "population": 1094.0,
+    "average_occupancy": 2.1284046692607004,
+    "latitude": 37.84,
+    "longitude": -122.25
+}
 }

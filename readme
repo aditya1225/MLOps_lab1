@@ -1,0 +1,5 @@
+Hi,
+
+For the Lab1 I have completed the API Labs, particularly the FastAPI_Lab and the Streamlit_Lab. These can be found in the same folders as of the professor's repo.
+
+I have also created the dockerfiles for these labs so as to create the docker images for them.
